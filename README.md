@@ -33,19 +33,6 @@ Validation: govalidator
 Rate Limit: Redis-based
 
 
-📁 Project Structure
-.
-├── api/
-├── db/
-├── database/
-├── helpers/
-├── routes/
-├── main.go
-├── Dockerfile
-├── docker-compose.yml
-├── .env
-└── README.md
-
 ⚙️ Environment Variables
 
 Create a .env file in the root:
