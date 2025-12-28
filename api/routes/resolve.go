@@ -1,10 +1,12 @@
 package routes
 
 import (
-	"time"
-	"github.com/runtimeninja/golang-redis-url-shortner/database"
-	"github.com/redis/go-redis/v9"
-	"github.com/gofiber/fiber/v2"
+	"context"
+    "log"
+    "time"
+    "github.com/runtimeninja/go-redis-url-shortner/database"
+    "github.com/redis/go-redis/v9"
+    "github.com/gofiber/fiber/v2"
 )
 
 func ResolveURL(c *fiber.Ctx) error {
@@ -14,7 +16,7 @@ func ResolveURL(c *fiber.Ctx) error {
 	defer r.Close()
 
 	// local timeout context for Redis operations
-	timeoutCtx, cancel := time.WithTimeout(database.Ctx, 3*time.Second)
+	timeoutCtx, cancel := context.WithTimeout(database.Ctx, 3*time.Second)
 	defer cancel()
 
 	value, err := r.Get(timeoutCtx, url).Result()
