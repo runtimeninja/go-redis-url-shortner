@@ -13,9 +13,10 @@ func setupMiddlewares(app *fiber.App) {
 	app.Use(logger.New())
 }
 
-func setupRoutes(app *fiber.App){
-	app.Get("/:url", routes.ResolveURL)
+func setupRoutes(app *fiber.App) {
 	app.Post("/urlshortner/api/v1", routes.ShortenURL)
+	app.Get("/urlshortner/analytics/v1/:short", routes.Analytics)
+	app.Get("/:url", routes.ResolveURL)
 }
 
 func main() {
